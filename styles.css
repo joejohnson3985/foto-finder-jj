@@ -1,0 +1,218 @@
+body {
+  font-family: "open sans";
+  color: #3e2a35;
+  background-color: #c3b2b4;
+}
+
+.header-form {
+  background-color: #3e2a35;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 50px;
+}
+
+.header-img {
+  height: 50px;
+  margin: 0 10px;
+}
+
+.header-text {
+  display: flex;
+  align-items: center;
+  color: white;
+  font-size: 50px;
+  letter-spacing: 5px;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  border: 4px solid #c2b2b4;
+}
+
+.search-bar {
+  height: 40px;
+  width: 350px;
+  border: none;
+  padding-left: 8px;
+  font-size: 24px;
+}
+
+.search-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 42px;
+  background-color: #c2b2b4;
+}
+
+.fa-search {
+  font-size: 30px;
+  color: white;
+}
+
+.photo-upload-form {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 50%;
+  margin: 50px auto 0 auto;
+}
+
+.input-container {
+  font-size: 22px;
+  color: white;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  width: 100%;
+}
+
+.input-container label {
+  margin-bottom: 6px;
+}
+
+.inputs {
+  height: 70px;
+  margin-bottom: 20px;
+  width: 100%;
+  border: none;
+  padding: 0;
+}
+
+.file-upload-container {
+  width: 100%;
+  height: 70px;
+  margin-top: 35px;
+}
+
+.btn {
+  background-color: #5b4447;
+  border: none;
+  color: white;
+  font-size: 22px;
+  height: 70px;
+}
+
+.btn:hover {
+  background-color: #938284;
+}
+
+.upload-button {
+  width:100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.upload-button:focus {
+  background-color: #938284;
+}
+
+.file-upload {
+  display: none;
+}
+
+button:disabled {
+  background-color: #938284;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 70px;
+  margin: 55px 0 35px 0;
+}
+
+.function-buttons {
+  width: 45%;
+}
+
+.photo-area {
+  display: flex;
+  /*justify-content: space-around;*/
+  flex-wrap: wrap;
+  margin: 0 45px;
+  padding: 40px;
+}
+
+.photo-card {
+  border: 2px solid #938284;
+  width: 250px;
+  background-color: #ffffff;
+  border-radius: 3px;
+  margin: 20px 2.5%;
+}
+
+.photo-file-container {
+  width: 100%;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+}
+
+.photo-file {
+  max-height: 200px;
+  max-width: 100%;
+}
+
+.photo-text {
+  font-size: 20px;
+  margin: 10px;
+}
+
+.photo-actions {
+  background-color: #5b4447;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
+  padding: 5px;
+}
+
+.favorite {
+  height: 90%;
+  width: 40px;
+  background-image: url(images/favorite.svg);
+  background-size: auto;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  border: none;
+}
+
+.favorite-active {
+  height: 90%;
+  width: 40px;
+  background-image: url(images/favorite.svg);
+  background-size: auto;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  border: none;
+}
+
+.favorite:hover {
+  background-image: url(images/favorite-active.svg);
+}
+
+.delete {
+  height: 100%;
+  width: 40px;
+  background-image: url(images/delete.svg);
+  background-size: auto;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  border: none;
+}
+
+.delete:hover {
+  background-image: url(images/delete-active.svg);
+}

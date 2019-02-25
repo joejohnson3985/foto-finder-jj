@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="normalize.css">
+    <link rel="stylesheet" type="text/css" href="">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:600,800" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+    <title>Foto Finder</title>
+  </head>
+  <body>
+    <section class="header-form">
+      <header class="header">
+        <h1 class="header-text">FOTO<img class="header-img" src="images/foto-finder-logo.svg">FINDER</h1>
+        <nav class="search-container">
+          <input type="text" class="search-bar" name="search" placeholder="Search">
+          <div class="search-button">
+            <i class="fas fa-search"></i>
+          </div>
+        </nav>
+      </header>
+      <form class="photo-upload-form">
+        <div class="input-container">
+          <label>Title</label>
+          <input type="text" name="title" class="photo-title inputs" id="title-input">
+        </div>
+        <div class="input-container">
+          <label>Caption</label>
+          <input type="text" name="caption" class="photo-caption inputs" id="caption-input">
+        </div>
+        <div class="file-upload-container">
+          <label for="file-upload" class="btn upload-button">Choose a file</label>
+          <input type="file" name="file-upload" id="file-upload" class="file-upload">
+        </div>
+        <div class="button-container">
+          <button class="btn function-buttons">View Favorites</button>
+          <button class="btn function-buttons" id="add-photo-button">Add to Album</button>
+        </div>
+    </section>
+    <section class="photo-area" id="photo-area">
+    </section>
+    <!-- photo Card Template -->
+    <template id="photo-card-template">
+      <article class="photo-card" id="photo-card" data-id=${id}>
+        <p class="photo-text" id="photo-title">${title}</p>
+        <div class="photo-file-container">
+          <img class="photo-file" id="photo-file">
+        </div>
+        <p class="photo-text" id="photo-caption">${caption}</p>
+        <div class="photo-actions">
+          <button class="delete" src="images/delete.svg" id="delete">
+          <button class="favorite" src="images/favorite.svg" id="favorite">
+        </div>
+      </article>
+    </template>
+  </body>
+  <script type="text/javascript" src="photo.js"></script>
+  <script type="text/javascript" src="main.js"></script>
+</html>
