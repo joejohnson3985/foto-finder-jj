@@ -1,14 +1,16 @@
+// Variables
 var photosArray = JSON.parse(localStorage.getItem('photosArray')) || [];
 
-var reader = new FileReader();
+var addPhotoBtn = document.getElementById('add-photo-button');
+var captionInput = document.getElementById('caption-input');
 var fileInput = document.getElementById('file-upload');
+var reader = new FileReader();
 var photoCardTemplate = document.getElementById('photo-card-template');
 var photoArea = document.getElementById('photo-area');
-var addPhotoBtn = document.getElementById('add-photo-button');
-var titleInput = document.getElementById('title-input');
-var captionInput = document.getElementById('caption-input');
 var searchInput = document.querySelector('#search-box');
+var titleInput = document.getElementById('title-input');
 
+// Event Listeners
 addPhotoBtn.addEventListener('click', function(e) {
   e.preventDefault();
   loadPhoto();
@@ -19,11 +21,11 @@ photoArea.addEventListener('click', function(event) {
   favoritePhoto();
 });
 
+photoArea.addEventListener('keyup', updateText);
+
 searchInput.addEventListener('keydown', function() {
   searchPhotoCard();
 });
-
-photoArea.addEventListener('keyup', updateText);
 
 window.addEventListener('keypress', function (e) {
  if (e.keyCode === 13) {
@@ -32,6 +34,7 @@ window.addEventListener('keypress', function (e) {
  }
 });
 
+// Functions
 function onload(oldPhotos) {
   photosArray = [];
   oldPhotos.forEach(function(photo) {
@@ -39,25 +42,6 @@ function onload(oldPhotos) {
     photosArray.push(newPhotoCard);
     addPhotoCard(newPhotoCard);
   });
-};
-
-function clearFields() {
-  titleInput.value = '';
-  captionInput.value = '';
-};
-
-function loadPhoto() {
-  if (fileInput.files[0]) {
-    reader.readAsDataURL(fileInput.files[0]); 
-    reader.onload = photoClass;
-  }
-}
-
-function photoClass(e) {
-  var newPhoto = new Photo(titleInput.value, captionInput.value, Date.now(), e.target.result);
-  addPhotoCard(newPhoto);
-  photosArray.push(newPhoto);
-  newPhoto.saveToStorage(photosArray);
 };
 
 function addPhotoCard(newPhotoCard) {
@@ -68,6 +52,11 @@ function addPhotoCard(newPhotoCard) {
   clone.getElementById('photo-file').src = newPhotoCard.file;
   photoArea.insertBefore(clone, photoArea.firstChild);
   clearFields();
+};
+
+function clearFields() {
+  titleInput.value = '';
+  captionInput.value = '';
 };
 
 function deletePhoto() {
@@ -84,6 +73,20 @@ function findPhoto(event) {
     return photo.id === id;
   });
 }
+
+function loadPhoto() {
+  if (fileInput.files[0]) {
+    reader.readAsDataURL(fileInput.files[0]); 
+    reader.onload = photoClass;
+  }
+}
+
+function photoClass(e) {
+  var newPhoto = new Photo(titleInput.value, captionInput.value, Date.now(), e.target.result);
+  addPhotoCard(newPhoto);
+  photosArray.push(newPhoto);
+  newPhoto.saveToStorage(photosArray);
+};
 
 function searchPhotoCard() {
     photoArea.innerHTML = '';

@@ -2,18 +2,19 @@
   outline: none;
 }
 body {
-  font-family: "open sans";
-  color: #3e2a35;
   background-color: #c3b2b4;
+  color: #3e2a35;
+  font-family: "open sans";
 }
 
+/*Header*/
 .header-form {
   background-color: #3e2a35;
 }
 
 .header {
-  display: flex;
   align-items: center;
+  display: flex;
   justify-content: space-between;
   padding: 0 50px;
 }
@@ -24,56 +25,57 @@ body {
 }
 
 .header-text {
-  display: flex;
   align-items: center;
   color: white;
+  display: flex;
   font-size: 50px;
   letter-spacing: 5px;
 }
 
 .search-container {
-  display: flex;
   align-items: center;
   border-radius: 8px;
   border: 4px solid #c2b2b4;
+  display: flex;
 }
 
 .search-bar {
+  border: none;
+  font-size: 24px;
   height: 40px;
   width: 350px;
-  border: none;
   padding-left: 8px;
-  font-size: 24px;
 }
 
 .search-button {
-  display: flex;
   align-items: center;
+  background-color: #c2b2b4;
+  display: flex;
+  height: 42px;
   justify-content: center;
   width: 50px;
-  height: 42px;
-  background-color: #c2b2b4;
 }
 
 .fa-search {
-  font-size: 30px;
   color: white;
+  font-size: 30px;
 }
 
+/*Photo Upload Form*/
 .photo-upload-form {
   display: flex;
   align-items: center;
   flex-direction: column;
-  width: 50%;
   margin: 50px auto 0 auto;
+  width: 50%;
 }
 
 .input-container {
-  font-size: 22px;
+  align-items: flex-start;
   color: white;
   display: flex;
-  align-items: flex-start;
   flex-direction: column;
+  font-size: 22px;
   width: 100%;
 }
 
@@ -82,17 +84,17 @@ body {
 }
 
 .inputs {
+  border: none;
   height: 70px;
   margin-bottom: 20px;
-  width: 100%;
-  border: none;
   padding: 0;
+  width: 100%;
 }
 
 .file-upload-container {
-  width: 100%;
   height: 70px;
   margin-top: 35px;
+  width: 100%;
 }
 
 .btn {
@@ -108,11 +110,11 @@ body {
 }
 
 .upload-button {
-  width:100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
   align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  width:100%;
 }
 
 .upload-button:focus {
@@ -128,38 +130,41 @@ button:disabled {
 }
 
 .button-container {
-  display: flex;
-  justify-content: space-between;
   align-items: center;
-  width: 100%;
+  display: flex;
   height: 70px;
+  justify-content: space-between;
   margin: 55px 0 35px 0;
+  width: 100%;
 }
 
 .function-buttons {
   width: 45%;
 }
 
+/*Photo Card Display Area*/
 .photo-area {
   display: flex;
-  justify-content: space-around;
   flex-wrap: wrap;
+  justify-content: space-around;
   margin: 0 45px;
 }
 
+/*Photo Card*/
+
 .photo-card {
-  border: 2px solid #938284;
-  width: 250px;
   background-color: #ffffff;
+  border: 2px solid #938284;
   border-radius: 3px;
   margin: 20px /*2.5%*/;
+  width: 250px;
 }
 
 .photo-file-container {
-  width: 100%;
-  height: 200px;
   display: flex;
+  height: 200px;
   justify-content: center;
+  width: 100%;
 }
 
 .photo-file {
@@ -183,32 +188,32 @@ button:disabled {
 }
 
 .photo-actions {
+  align-items: center;
   background-color: #5b4447;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
   height: 40px;
+  justify-content: space-between;
   padding: 5px;
 }
 
 .favorite {
+  background-color: transparent;
+  background-image: url(images/favorite.svg);
+  background-repeat: no-repeat;
+  background-size: auto;
+  border: none;
   height: 90%;
   width: 40px;
-  background-image: url(images/favorite.svg);
-  background-size: auto;
-  background-repeat: no-repeat;
-  background-color: transparent;
-  border: none;
 }
 
 .favorite-active {
+  background-color: transparent;
+  background-image: url(images/favorite-active.svg);
+  background-repeat: no-repeat;
+  background-size: auto;
+  border: none;
   height: 90%;
   width: 40px;
-  background-image: url(images/favorite-active.svg);
-  background-size: auto;
-  background-repeat: no-repeat;
-  background-color: transparent;
-  border: none;
 }
 
 .favorite:hover {
@@ -216,36 +221,41 @@ button:disabled {
 }
 
 .delete {
+  background-color: transparent;
+  background-image: url(images/delete.svg);
+  background-repeat: no-repeat;
+  background-size: auto;
+  border: none;
   height: 100%;
   width: 40px;
-  background-image: url(images/delete.svg);
-  background-size: auto;
-  background-repeat: no-repeat;
-  background-color: transparent;
-  border: none;
 }
 
 .delete:hover {
   background-image: url(images/delete-active.svg);
 }
 
+/*Media Queries*/
 @media only screen and (max-width: 1000px) {
   .header {
-    flex-direction: column;
     align-items: center;
+    flex-direction: column;
     justify-content: center;
   }
 }
 
 @media only screen and (max-width: 750px) {
   .button-container {
+    align-items: center;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
   }
 
   .function-buttons {
     margin: 10px 0;
+    width: 100%
+  }
+  .photo-upload-form {
+    width: 70%;
   }
 }
 
@@ -265,6 +275,12 @@ button:disabled {
   .function-buttons {
     width: 100%;
   }
+
+  .photo-area {
+    margin: 0 20px;
+  }
+  
+  .photo-upload-form {
+    width: 80%;
+  }
 }
-
-

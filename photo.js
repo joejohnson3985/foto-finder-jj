@@ -6,13 +6,13 @@ class Photo {
     this.file = file;
     this.favorite = false;
   }
-  saveToStorage() {
-    localStorage.setItem('photosArray', JSON.stringify(photosArray));
-  }
   deleteFromStorage() {
     var index = photosArray.indexOf(this);
     photosArray.splice(index, 1);
     this.saveToStorage();
+  }
+  saveToStorage() {
+    localStorage.setItem('photosArray', JSON.stringify(photosArray));
   }
   updatePhoto() {
     var index = photosArray.indexOf(this);
