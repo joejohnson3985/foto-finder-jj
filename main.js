@@ -9,6 +9,7 @@ var photoCardTemplate = document.getElementById('photo-card-template');
 var photoArea = document.getElementById('photo-area');
 var searchInput = document.querySelector('#search-box');
 var titleInput = document.getElementById('title-input');
+var photoInputForm = document.getElementById('photo-input-form');
 
 // Event Listeners
 addPhotoBtn.addEventListener('click', function(e) {
@@ -16,12 +17,19 @@ addPhotoBtn.addEventListener('click', function(e) {
   loadPhoto();
 })
 
+fileInput.addEventListener('change', function() {
+  fileUploadSuccess();
+  enableButtons();
+});
+
 photoArea.addEventListener('click', function(event) {
   deletePhoto();
   favoritePhoto();
 });
 
 photoArea.addEventListener('keyup', updateText);
+
+photoInputForm.addEventListener('keyup', enableButtons);
 
 searchInput.addEventListener('keydown', function() {
   searchPhotoCard();
@@ -59,11 +67,24 @@ function clearFields() {
   captionInput.value = '';
 };
 
+function fileUploadSuccess() {
+  if (fileInput.value !== '') {
+    var inputButtonText = document.getElementById('input-button-text');
+    inputButtonText.innerText = 'Success!';
+  }
+}
+
 function deletePhoto() {
   if (event.target.id === 'delete') {
     event.target.closest('.photo-card').remove();
     var photoToDelete = findPhoto(event);
     photoToDelete.deleteFromStorage();
+  }
+}
+
+function enableButtons() {
+  if (captionInput.value !== '' && titleInput.value !== '' && fileInput.value !== '') {
+    addPhotoBtn.disabled = false;
   }
 }
 
