@@ -12,5 +12,10 @@ class Photo {
   deleteFromStorage() {
     var index = photosArray.indexOf(this);
     photosArray.splice(index, 1);
+    this.saveToStorage();
+  }
+  updatePhoto() {
+    var index = photosArray.indexOf(this);
+    this.saveToStorage();
   }
 };

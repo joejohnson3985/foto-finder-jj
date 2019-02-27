@@ -1,26 +1,3 @@
-
-
-// var create = document.querySelector('button');
-// var photoGallery = document.querySelector('.images');
-// var imagesArr = JSON.parse(localStorage.getItem('photos')) || [];
-
-// window.addEventListener('load', addPhotoCard);
-// create.addEventListener('click', loadImg);
-
-// function appendPhotos() {
-//   imagesArr.forEach(function (photo) {
-//     photoGallery.innerHTML += `<img src=${photo.file} />`
-//   })
-// }
-
-// function addPhoto(e) {
-//   // console.log(e.target.result);
-//   var newPhoto = new Photo(Date.now(), e.target.result);
-//   photoGallery.innerHTML += `<img src=${e.target.result} />`;
-//   imagesArr.push(newPhoto)
-//   newPhoto.saveToStorage(imagesArr)
-// }
-
 var photosArray = JSON.parse(localStorage.getItem('photosArray')) || [];
 
 var reader = new FileReader();
@@ -30,6 +7,7 @@ var photoArea = document.getElementById('photo-area');
 var addPhotoBtn = document.getElementById('add-photo-button');
 var titleInput = document.getElementById('title-input');
 var captionInput = document.getElementById('caption-input');
+var searchInput = document.querySelector('#search-box');
 
 addPhotoBtn.addEventListener('click', function(e) {
   e.preventDefault();
@@ -41,7 +19,18 @@ photoArea.addEventListener('click', function(event) {
   favoritePhoto();
 });
 
-onload(photosArray);
+searchInput.addEventListener('keydown', function() {
+  searchPhotoCard();
+});
+
+photoArea.addEventListener('keyup', updateText);
+
+window.addEventListener('keypress', function (e) {
+ if (e.keyCode === 13) {
+   updateText(e);
+   e.target.blur();
+ }
+});
 
 function onload(oldPhotos) {
   photosArray = [];
@@ -53,12 +42,11 @@ function onload(oldPhotos) {
 };
 
 function clearFields() {
-  titleInput.value = "";
-  captionInput.value = "";
+  titleInput.value = '';
+  captionInput.value = '';
 };
 
 function loadPhoto() {
-  console.log(fileInput.files[0])
   if (fileInput.files[0]) {
     reader.readAsDataURL(fileInput.files[0]); 
     reader.onload = photoClass;
@@ -67,21 +55,19 @@ function loadPhoto() {
 
 function photoClass(e) {
   var newPhoto = new Photo(titleInput.value, captionInput.value, Date.now(), e.target.result);
-  console.log(newPhoto);
   addPhotoCard(newPhoto);
-  console.log(photosArray);
   photosArray.push(newPhoto);
   newPhoto.saveToStorage(photosArray);
 };
 
 function addPhotoCard(newPhotoCard) {
   var clone = photoCardTemplate.content.cloneNode(true);
-  clone.getElementById("photo-card").setAttribute('data-id', newPhotoCard.id);
-  clone.getElementById("photo-title").innerText = newPhotoCard.title;
-  clone.getElementById("photo-caption").innerText = newPhotoCard.caption;
-  console.log(newPhotoCard.file);
-  clone.getElementById("photo-file").src = newPhotoCard.file;
+  clone.getElementById('photo-card').setAttribute('data-id', newPhotoCard.id);
+  clone.getElementById('photo-title').innerText = newPhotoCard.title;
+  clone.getElementById('photo-caption').innerText = newPhotoCard.caption;
+  clone.getElementById('photo-file').src = newPhotoCard.file;
   photoArea.insertBefore(clone, photoArea.firstChild);
+  clearFields();
 };
 
 function deletePhoto() {
@@ -99,6 +85,26 @@ function findPhoto(event) {
   });
 }
 
-function favoritePhoto(e) {
-  photo.favorite = !favorite;
+function searchPhotoCard() {
+    photoArea.innerHTML = '';
+    var filteredPhotos = photosArray.filter(function(photo) {
+      return photo.caption.toLowerCase().includes(searchInput.value) || photo.title.toLowerCase().includes(searchInput.value);
+    });
+    filteredPhotos.forEach(function(photo) {
+      addPhotoCard(photo);
+    })
+};
+
+function updateText(e) {
+  var photoToUpdate = findPhoto(event);
+  console.log(photoToUpdate);
+  if (e.target.id === 'photo-title') {
+    photoToUpdate.title = e.target.innerText;
+  }
+  if (e.target.id === 'photo-caption') {
+    photoToUpdate.caption = e.target.innerText;
+  }
+  photoToUpdate.saveToStorage();
 }
+
+onload(photosArray);

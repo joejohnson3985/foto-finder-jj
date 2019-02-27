@@ -1,3 +1,6 @@
+* {
+  outline: none;
+}
 body {
   font-family: "open sans";
   color: #3e2a35;
@@ -170,6 +173,16 @@ button:disabled {
   margin: 10px;
 }
 
+.caption {
+  height: 90px;
+  overflow-y: auto;
+}
+
+.title {
+  height: 40px;
+  overflow-x: auto;
+}
+
 .photo-actions {
   background-color: #5b4447;
   display: flex;
@@ -192,7 +205,7 @@ button:disabled {
 .favorite-active {
   height: 90%;
   width: 40px;
-  background-image: url(images/favorite.svg);
+  background-image: url(images/favorite-active.svg);
   background-size: auto;
   background-repeat: no-repeat;
   background-color: transparent;

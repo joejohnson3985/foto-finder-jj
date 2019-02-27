@@ -14,7 +14,7 @@
       <header class="header">
         <h1 class="header-text">FOTO<img class="header-img" src="images/foto-finder-logo.svg">FINDER</h1>
         <nav class="search-container">
-          <input type="text" class="search-bar" name="search" placeholder="Search">
+          <input type="text" class="search-bar" name="search" id="search-box" placeholder="Search">
           <div class="search-button">
             <i class="fas fa-search"></i>
           </div>
@@ -43,14 +43,14 @@
     <!-- photo Card Template -->
     <template id="photo-card-template">
       <article class="photo-card" id="photo-card" data-id=${id}>
-        <p class="photo-text" id="photo-title">${title}</p>
+        <p class="photo-text title" id="photo-title" contenteditable="true">${title}</p>
         <div class="photo-file-container">
           <img class="photo-file" id="photo-file">
         </div>
-        <p class="photo-text" id="photo-caption">${caption}</p>
+        <p class="photo-text caption" id="photo-caption" contenteditable="true">${caption}</p>
         <div class="photo-actions">
-          <button class="delete" src="images/delete.svg" id="delete">
-          <button class="favorite" src="images/favorite.svg" id="favorite">
+          <button class="delete" id="delete">
+          <button class="favorite" id="favorite">
         </div>
       </article>
     </template>
