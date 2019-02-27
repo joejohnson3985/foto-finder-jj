@@ -63,16 +63,12 @@ function addPhotoCard(newPhotoCard) {
 };
 
 function clearFields() {
+  var inputButtonText = document.getElementById('input-button-text');
   titleInput.value = '';
   captionInput.value = '';
-};
+  inputButtonText.innerText = 'Choose a File';
 
-function fileUploadSuccess() {
-  if (fileInput.value !== '') {
-    var inputButtonText = document.getElementById('input-button-text');
-    inputButtonText.innerText = 'Success!';
-  }
-}
+};
 
 function deletePhoto() {
   if (event.target.id === 'delete') {
@@ -85,6 +81,13 @@ function deletePhoto() {
 function enableButtons() {
   if (captionInput.value !== '' && titleInput.value !== '' && fileInput.value !== '') {
     addPhotoBtn.disabled = false;
+  }
+}
+
+function fileUploadSuccess() {
+  if (fileInput.value !== '') {
+    var inputButtonText = document.getElementById('input-button-text');
+    inputButtonText.innerText = 'Success!';
   }
 }
 
