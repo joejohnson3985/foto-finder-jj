@@ -142,10 +142,9 @@ button:disabled {
 
 .photo-area {
   display: flex;
-  /*justify-content: space-around;*/
+  justify-content: space-around;
   flex-wrap: wrap;
   margin: 0 45px;
-  padding: 40px;
 }
 
 .photo-card {
@@ -153,7 +152,7 @@ button:disabled {
   width: 250px;
   background-color: #ffffff;
   border-radius: 3px;
-  margin: 20px 2.5%;
+  margin: 20px /*2.5%*/;
 }
 
 .photo-file-container {
@@ -229,3 +228,43 @@ button:disabled {
 .delete:hover {
   background-image: url(images/delete-active.svg);
 }
+
+@media only screen and (max-width: 1000px) {
+  .header {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  .button-container {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .function-buttons {
+    margin: 10px 0;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .header-text {
+    font-size: 23px;
+  }
+
+  .search-container {
+    width: 280px;
+  }
+
+  .search-bar {
+    width: 90%;
+  }
+
+  .function-buttons {
+    width: 100%;
+  }
+}
+
+
